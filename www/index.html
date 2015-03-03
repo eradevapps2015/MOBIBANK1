@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <style>
+       .appTitle {
+           font-family: Arial Black,Arial Bold,Gadget,sans-serif; 
+           font-size: 20px; 
+           font-style: normal; 
+           font-variant: normal; 
+           font-weight: 500; 
+           line-height: 26.4px;
+       }
+        
+       .input-textfield-custom {
+           height: 35px;
+           border: 1px solid #aaaaaa;
+           background: inherit;
+		   padding-right:0;
+		   
+       }
+       
+   
+        
+        .icon-btn-custom {
+            font-size: 18px;
+        }
+        
+        .signout-btn-custom {
+            font-size: 24px;  
+        }
+                        
+       .button.button-block, .button.button-full {
+            margin-bottom: 2px;
+            margin-top: 2px;			
+			
+			
+        }
+        
+        .button {
+            background-color: #f8f8f8;
+            border-color: #b2b2b2;
+            border-radius: 4px;
+            border-style: solid;
+            border-width: 1px;
+            color: #444;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 16px;
+            line-height: 32px;
+            margin: 0;
+            min-height: 32px;
+            min-width: 52px;
+            padding: 0 12px;
+            position: relative;
+            text-align: center;
+            text-overflow: ellipsis;
+            vertical-align: top;
+        }
+		
+		
+		
+				
+			.input-label {
+			-moz-box-flex: 1;
+			color: #1f62af;
+			display: table;
+			flex: 1 0 100px;
+			font-size: 80%;
+			max-width: 200px;
+			padding: 3px 5px 5px 0;
+			margin-left:1px;
+			width: 40%;
+			
+		}
+		
+		.input-label_radiobutton {
+			-moz-box-flex: 1;
+			color: #1f62af;
+			display: table;
+			flex: 1 0 100px;
+			font-size: 80%;
+			max-width: 200px;
+			padding: 3px 5px 5px 0;
+			margin-left:1px;
+			width: 60%;
+			
+		}
+		.item-select select {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    color: #333;
+    cursor: pointer;
+    direction: rtl;
+    font-size: 14px;
+    max-width: 65%;
+    padding: 14px 25px 16px 16px;
+    position: absolute;
+    right: 0;
+    text-indent: 0.01px;
+    text-overflow: "";
+    top: 0;
+    white-space: nowrap;
+	
+	 .input-textfield-border {
+           height: 35px;
+           border: 1px solid #1f62af;
+           background: inherit;
+       }
+	   
+	  .item-input-wrapper input {
+    background: none repeat scroll 0 0 transparent;
+    height: 29px;
+    line-height: 18px;
+    padding-left: 0;
+	
+}
+
+	.div-custom {
+           padding: 2px;
+           width: 80%;		    
+           margin-left: 10%;
+       }
+}
+    </style>
+  </head>
+  <body ng-app="starter">
+
+    <ion-nav-bar animation="nav-title-slide-ios7" 
+                 type="bar-positive" 
+                 back-button-type="button-icon" 
+                 back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+      
+      <script id="signin.html" type="text/ng-template">
+	  
+      <ion-view title="<span class='appTitle'>MobiBank</span>" left-buttons="leftButtons" right-buttons="rightButtons">
+	  
+	    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+		  <ion-nav-buttons></ion-nav-buttons>
+	      <ion-nav-back-button></ion-nav-back-button>
+        </ion-nav-bar>
+		
+		  <ion-tabs class="tabs-icon-top tabs-bottom tabs-positive">
+
+        <ion-tab title="Home" icon="ion-home">
+          <ion-nav-view >
+		  <ion-content class="padding">
+			<div style="width: 300px; height: 10px;" class="spacer"></div>
+            <div style="line-height: 20px; background-color: rgb(255, 255, 255); text-align: center; vertical-align: center;">
+                <img style="vertical-align: center;" src="img/apps_logo.png"/>
+            </div>
+            
+          <div class="list">            
+            <div class="item item-input-inset" style="border: none;">            
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-person placeholder-icon positive icon-person-custom"></i>
+                    <input type="text" placeholder="User ID" ng-model="user.uname">
+                </label>
+            </div>
+            <div class="item item-input-inset" style="border: none;">
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-locked placeholder-icon positive"></i>
+                    <input type="password" placeholder="Password" ng-model="user.pass">
+                </label>            
+            </div>
+          
+			<div>
+			 <button class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:20px;" ng-click="login(user)">
+                        <i class="icon-left ion-log-in icon-btn-custom"></i>&nbsp;Sign in
+                    </button>        
+			</div>
+            
+          </div>
+		  </ion-content>
+		  </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Locations" icon="ion-location" >
+			 <ion-tabs class="tabs-icon-top tabs-top tabs-positive" animation="slide-left-right">
+						
+				<ion-tab title="Branch Locations" icon="ion-home">
+				<ion-nav-view >
+				  <ion-content class="padding">
+				  <p>Branch Location</p>
+				   </ion-content>
+				</ion-nav-view>
+			 </ion-tab>
+			 <ion-tab title="ATM Locations" icon="ion-navigate">
+				<ion-nav-view >
+				  <ion-content class="padding">
+				  <p>ATM Location</p>
+				   </ion-content>
+				</ion-nav-view>
+			 </ion-tab>
+		  </ion-tabs>
+          
+        </ion-tab>
+
+       
+
+      </ion-tabs>
+		
+		
+        <!--
+           
+        <ion-content has-header="true">
+            <div style="width: 300px; height: 10px;" class="spacer"></div>
+            <div style="line-height: 20px; background-color: rgb(255, 255, 255); text-align: center; vertical-align: center;">
+                <img style="vertical-align: center;" src="img/apps_logo.png"/>
+            </div>
+            
+          <div class="list">            
+            <div class="item item-input-inset" style="border: none;">            
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-person placeholder-icon positive icon-person-custom"></i>
+                    <input type="text" placeholder="User ID" ng-model="user.uname">
+                </label>
+            </div>
+            <div class="item item-input-inset" style="border: none;">
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-locked placeholder-icon positive"></i>
+                    <input type="password" placeholder="Password" ng-model="user.pass">
+                </label>            
+            </div>
+          
+			<div>
+			 <button class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:20px;" ng-click="login(user)">
+                        <i class="icon-left ion-log-in icon-btn-custom"></i>&nbsp;Sign in
+                    </button>        
+			</div>
+            
+          </div>
+          		  		  
+        </ion-content>
+		<div class="bar bar-footer">
+		  <div class="title"><h6>(c) ERA InfoTech Limited. All right reserved</h6></div>
+		</div>  -->
+      </ion-view>
+	
+    </script>
+    <script id="forgotpassword.html" type="text/ng-template">
+      <ion-view title="Forgot Password">
+        <ion-content has-header="true" padding="true">
+          <p>
+            Enter Your Email Address
+          </p>
+          <p>
+            <label class="item item-input">
+				<input type="email" placeholder="example@email.com" id="email" required>
+			</label>
+          	<button class="button button-block button-positive" id="reset">
+              SUBMIT
+            </button>
+          </p>
+          <p>
+            Retorne para o 	<a href="#/signin">Login</a>.
+          </p>
+        </ion-content>
+      </ion-view>
+    </script>
+	
+			
+			
+			<!--Welcome Home ***********************************************************************************************************************-->		
+			
+      <script id="welcome.html" type="text/ng-template">
+
+      <ion-view title="DashBoard">
+	     <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+            <ion-nav-buttons side="right" >
+                <a title="Sign out" class="button button-outline icon-right ion-log-out signout-btn-custom" ng-click="btnLogOut()">                    
+                </a>
+           
+		    </ion-nav-buttons >
+			
+			
+		   
+		   
+         </ion-nav-bar>
+		 
+	
+	  
+        <ion-content has-header="true" padding="true">
+                <p style=" text-align:center">{{errorMessage}}</p>  
+
+         <div class="list">  
+   
+		
+		<a href="#/accBalance" class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Balance</a>
+		<a href="#/accStatement" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Statement</a>
+		<a href="#/fundTranster" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Fund Transfer</a>
+		<a href="#/fundTransterRequest" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Standing Ins.</a>
+		<a href="#/talkTimeRecharge" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Talk Time Recharge</a>
+		<a href="#/stopChequeLeaf" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Stop Cheque Leaf</a>
+		<a href="#/chequeStatusInquiry" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Cheque Status Inquiry</a>
+        <a href="#/changePassword" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Change Password</a>
+			
+		  </div>
+		  
+		  
+		  
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	
+	   <script id="sidemenu.html" type="text/ng-template">
+	   
+	   
+	  
+
+      <ion-view title="List">
+		<ion-side-menus>
+		  <!-- Center content -->
+		  <ion-side-menu-content >
+		  </ion-side-menu-content>
+
+		  <!-- Left menu -->
+		  <ion-side-menu side="left">
+		  </ion-side-menu>
+
+		  <!-- Right menu -->
+		  <ion-side-menu side="right">
+		  </ion-side-menu>
+		</ion-side-menus>
+
+    </script>
+			
+			<!--Account Balance-->
+			
+      <script id="accBalance.html" type="text/ng-template">
+      <ion-view title="Account Balance">
+	    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+	
+	
+  
+        <ion-content has-header="true" padding="true">
+		
+          Account Title:{{accountTitle}}
+           <div ng-app="" ng-init="{{accountBalanceNodes}}" >
+           <style>                
+                .color1 {
+                    background-color: #DDEEFF;
+                }
+
+                .color2 {
+                    background-color: #99CCFF;
+                }
+            </style>
+			
+			  <style>
+				table, th , td  {
+				  border: 1px solid grey;
+				  border-collapse: collapse;
+				  padding: 5px;
+				}
+				table tr:nth-child(odd)	{
+				  background-color: #f1f1f1;
+				}
+				table tr:nth-child(even) {
+				  background-color: #ffffff;
+				}
+				.fixed_headers {
+			  width: @table_width;
+			  table-layout: fixed;
+			  border-collapse: collapse;
+			  }
+				
+				
+				</style>
+          
+			
+				<ion-scroll zooming="true" direction="xy" style="width: 500px ; height:500px; margin-top:20px">	
+				<div style="width: 5000px; height: 5000px;">				
+                 <table class="fixed_headers">
+				  <thead>
+					<tr>
+					<th>SL</th>						
+					  <th>A/c Number</th>					 
+					  <th>Account Balance</th>	 
+					  <th>Account Type</th>		 
+					 
+					</tr>
+					</thead>
+					
+					  <tr ng-repeat="x in accountBalanceNodes" >
+						<td>{{x.slno }}</td>
+						<td>{{ x.accountNum }}</td>
+						<td>{{ x.availableBalance }} &nbsp;({{x.currencyCode}})</td>	
+						<td>{{x.accountType }}</td>
+											
+					  </tr>
+					</table>
+					</div>
+			</ion-scroll>			  
+            </div>             
+        </ion-content>
+      </ion-view>
+    </script>
+			
+			
+			
+			<!--Account Statement ***************************************************************************************************-->
+	
+	   <script id="accStatement.html" type="text/ng-template">
+      <ion-view title="Account Statement">
+	   <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">		
+	
+		
+			  
+			 	<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+					<select ng-model="sa.item" ng-change="update(sa)">					
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in accountStatementNumberListDescription" valu="{{x.sAccountNumber}}">{{x.sAccountNumber}}</option>
+				</select>
+			  </div>		
+		 
+		  
+		  <div class="item item-input-inset">    
+			<span class="input-label">From Date </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="date" ng-model="search.acFromDate"  />
+			</label>
+		  </div>
+		  
+		   <div class="item item-input-inset">    
+			<span class="input-label">To date</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="date" ng-model="search.acToDate" />
+			</label>
+		  </div>
+		  
+		  
+			
+		<label class="item item-input">
+		<button class="button button-positive" ng-click="SearchAction(search)">
+	 Search
+	</button>
+ </label>
+			
+	
+		
+ <div class="list" style="margin-top:10px">			
+			
+			
+			  <div ng-app="" ng-init="{{accountStatementNodes}}">
+           <style>
+				table, th , td  {
+				  border: 1px solid grey;
+				  border-collapse: collapse;
+				  padding: 5px;
+				}
+				table tr:nth-child(odd)	{
+				  background-color: #f1f1f1;
+				}
+				table tr:nth-child(even) {
+				  background-color: #ffffff;
+				}
+				</style>
+           
+                     
+        
+			<ion-scroll zooming="true" direction="xy" style="width: 500px; height:500px">
+			<div style="width: 5000px; height: 5000px;">			
+                  <table>
+					<tr>
+					  <th>SL.</th>						
+					  <th>Trans. Date</th>
+					  <th>Debt Amount</th>
+					  <th>Credit Amount</th>
+					  <th>Balance</th>
+					  <th>Naration</th>
+					</tr>
+					
+					  <tr ng-repeat="x in accountStatementNodes">
+						<td>{{x.slNo }}</td>
+						<td>{{ x.transactionDate }}</td>
+						<td>{{x.debtAmount }}</td>
+						<td>{{ x.creditAmount }}</td>
+						<td>{{x.balance }}</td>
+						<td>{{ x.naration }}</td>
+					  </tr>
+					</table>
+					
+				</div>
+			</ion-scroll>			  
+      
+            
+            
+            </div>            
+		
+			
+		</div>
+          
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	
+	<!--Fund Transfer *************************************************************************************************************-->
+	 <script id="fundTranster.html" type="text/ng-template">
+      <ion-view title="Fund Transfer">
+	   <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+	
+        <ion-content has-header="true" padding="true">
+		
+		
+  
+			<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+				
+				<select ng-model="sa.item" ng-change="update(sa)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
+				</select>
+			  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" value={{availableBalance}} >
+			</label>
+		  </div>
+			
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{currencyCode}} >
+			</label>
+		  </div>
+			
+			 <div class="item item-input-inset">    
+			<span class="input-label">Amount </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="fundtransfer.amount">
+			</label>
+		  </div>
+			
+		
+			
+			<div class="item item-input item-select">    
+				<span class="input-label">Destination A/c </span>
+				<select ng-model="da.destitionItem" ng-change="DestinationUpdate(da)">
+				 <option value="">-Select One-</option>
+				  <option ng-repeat="y in destrinationaAccountListNodes">{{y.sDestrinationAccountNo}}</option>
+				</select>
+			  </div>
+			
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" value={{destinationAccountTitle}}>
+			</label>
+		  </div>
+			
+		
+			<div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{destinationCurrency}}>
+			</label>
+		  </div>
+		
+		  
+			<div class="item item-input-inset">    
+			<span class="input-label">Remarks </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="fundtransfer.remarks" >
+			</label>
+		  </div>
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Pin Code </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="fundtransfer.pinCode" >
+			</label>
+		  </div>			
+			
+						
+				<label class="item item-input">
+				<button class="button button-positive" ng-click="DoSubmitAction(fundtransfer)">
+			 Submit
+			</button>
+		 </label>
+		
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	 
+			<!--*********Fund Transfer Request***********************************************************************************-->
+					
+      <script id="fundTransterRequest.html" type="text/ng-template">
+      <ion-view title="Fund Transfer Request">
+	   <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">
+		
+		
+		
+		
+		<div class="list">
+		
+			
+		  <div class="item item-input-inset">    
+			<span class="input-label">Request Date </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="date" ng-model="fundtransfer.requestDate">
+			</label>
+		  </div>
+			
+			<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Source A/c </span>
+				
+				<select ng-model="sa.item" ng-change="update(sa)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
+				</select>
+			  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" value={{availableBalance}} >
+			</label>
+		  </div>
+			
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{currencyCode}} >
+			</label>
+		  </div>
+			
+		  
+		  <div class="item item-input-inset">    
+			<span class="input-label">Amount </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="fundtransfer.amount">
+			</label>
+		  </div>
+			
+				<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Destination A/c</span>
+				
+				<select ng-model="da.destitionItem" ng-change="DestinationUpdate(da)">
+				 <option value="">-Select One-</option>
+				  <option ng-repeat="y in destrinationaAccountListNodes">{{y.sDestrinationAccountNo}}</option>
+				</select>
+			  </div>
+		
+			
+			 <div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" value={{destinationAccountTitle}}>
+			</label>
+		  </div>
+			
+			 <div class="item item-input-inset">    
+			<span class="input-label">Currency</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{destinationCurrency}}>
+			</label>
+		  </div>
+			
+		 <div class="item item-input-inset">    
+			<span class="input-label">Remarks</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="fundtransfer.remarks" >
+			</label>
+		  </div>
+		  
+		   <div class="item item-input-inset">    
+			<span class="input-label">Pin Code</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="fundtransfer.pinCode" >
+			</label>
+		  </div>
+		 
+		  
+			
+			
+			
+				
+		<label class="item item-input">
+		<button class="button button-positive" ng-click="DoSubmitAction(fundtransfer)">
+	 Submit
+	</button>
+ </label>
+			
+				
+         </div>
+       
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	
+	
+		<!-- Talk Time Recharge *******************************************************************************************************-->		
+			
+      <script id="talkTimeRecharge.html" type="text/ng-template">
+      <ion-view title="Talk Time Recharge">
+		 <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">
+        
+			
+			<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+				
+				<select ng-model="sa.item" ng-change="update(sa)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
+				</select>
+			  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" value={{availableBalance}} >
+			</label>
+		  </div>
+			
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{currencyCode}} >
+			</label>
+		  </div>			
+				
+			 
+			<div class="item item-input item-select">    
+				<span class="input-label"> Operator </span>
+				
+				<select ng-model="mobileoperator.item" ng-change="updateMoileOperator(mobileoperator)">
+				  <option value="">-Select One-</option>
+				  <option ng-repeat="x in mobileOperatorsNamesAndCodesNodes">{{x.mobileOperatorName}}</option>
+				</select>
+			  </div>
+			
+			
+			
+			  
+			  <label class="item item-input">
+			<span class="input-label">Mobile Type</span>
+			 <label class="input-label_radiobutton">
+			<ion-radio  id="mobileTypeRadio" ng-click="radioSubmit('PRE')"  >PrePaid</ion-radio>
+			<ion-radio  id="mobileTypeRadio"  ng-click="radioSubmit('PST')" >Post Paid</ion-radio>
+			</label>
+		  </label>		
+		  
+		   <div class="item item-input-inset">    
+			<span class="input-label">Mobile No. </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="talkTime.mobileNo"  >
+			</label>
+		  </div>
+
+			  <div class="item item-input-inset">    
+			<span class="input-label">Amount</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="number" ng-model="talkTime.amount" >
+			</label>
+		  </div>	
+		
+			  <div class="item item-input-inset">    
+			<span class="input-label">Pin Code</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="talkTime.pinCode"   >
+			</label>
+		  </div>	
+			
+		 	
+			 			
+				<label class="item item-input">
+				<button class="button button-positive" ng-click="DoSubmitAction(talkTime)" >
+			 Submit
+			</button>
+		 </label>
+			
+			
+          
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	 <!--***********************stop Cheque Leaf*********************--> 
+	   
+	  <script id="stopChequeLeaf.html" type="text/ng-template">
+      <ion-view title="Change Password">
+	<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">
+        
+
+		
+	
+			
+			<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Account No. </span>
+				
+				<select ng-model="sa.item" ng-change="update(sa)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in stopChequeAccountListNodes" >{{x.accountNum}}</option>
+				</select>
+			  </div>
+			  
+		<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitleselectByAccount}} readonly />
+			</label>
+		  </div>
+		  
+		
+		
+			<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Leaves </span>
+				
+				<select ng-model="le.item" ng-change="getChequeNumberSelectByLeaves(le)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+							<option ng-repeat="x in stopChequeLeavesListNodes" >{{x.chequeDescription}}</option>
+				</select>
+			  </div>
+			  
+		<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Reason </span>				
+					
+				<select ng-model="re.item" ng-change="getChequeResonCode(re)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+							<option ng-repeat="x in stopChequeResaonListNodes" >{{x.resonDescription}}</option>
+				</select>
+			  </div>
+		
+		 <div class="item item-input-inset">    
+			<span class="input-label">Pin Code</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="stopChequeLeaf.pinCode"   >
+			</label>
+		  </div>	
+			  
+			
+			<label class="item item-input">
+				<button class="button button-positive" ng-click="btnExecution(stopChequeLeaf)" >
+				 Submit
+				</button>
+			 </label>	
+
+		
+          
+        </ion-content>
+      </ion-view>
+    </script>
+	  
+	  
+	  
+	  <!--****************************Chnage Password**********************************************************************************-->
+	  
+	  <script id="changePassword.html" type="text/ng-template">
+      <ion-view title="Change Password">
+	<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">
+        
+
+		
+		  <div class="item item-input-inset">    
+			<span class="input-label">User ID </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text"  value={{userChangeID}} >
+			</label>
+		  </div>
+		   <div class="item item-input-inset">    
+			<span class="input-label">Old Password</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="changePassword.oldPassword"  >
+			</label>
+		  </div>
+		   <div class="item item-input-inset">    
+			<span class="input-label">New Password</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="changePassword.newPassword"  >
+			</label>
+		  </div>
+		  <div class="item item-input-inset">    
+			<span class="input-label">Confirm Password</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="password" ng-model="changePassword.confirmPassword"  >
+			</label>
+		  </div>
+		  
+		  <div class="item item-input-inset">    
+			<span class="input-label">Pin Expired Days</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="number" ng-model="changePassword.expiredDays"  >
+			</label>
+		  </div>
+		  
+	
+
+			<label class="item item-input">
+				<button class="button button-positive" ng-click="submitChangePassword(changePassword)" >
+				 Submit
+				</button>
+			 </label>	
+
+		
+          
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	 <!--***********************Cheque Status InquirY *********************--> 
+	   
+	  <script id="chequeStatusInquiry.html" type="text/ng-template">
+      <ion-view title="Change Password">
+	<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+        <ion-content has-header="true" padding="true">
+        
+
+		
+	
+			
+			<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Account No. </span>
+				
+				<select ng-model="sa.item" ng-change="update(sa)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+						<option ng-repeat="x in stopChequeAccountListNodes" >{{x.accountNum}}</option>
+				</select>
+			  </div>
+			  
+		<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitleselectByAccount}} readonly />
+			</label>
+		  </div>
+		
+			
+			  
+		<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Leaf Type </span>				
+					
+				<select ng-model="lt.item" ng-change="getInquiryLeafTypCode(lt)">
+				  <option value="" ng-selected="selected">-Select One-</option>
+							<option ng-repeat="x in chqueStatusInquiryTypNodes" >{{x.accountDescription}}</option>
+				</select>
+			  </div>
+		
+			
+		  <div class="item item-input-inset">    
+			<span class="input-label">From Date </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="date" ng-model="chequeInquiry.chFromDate"  />
+			</label>
+		  </div>
+		  
+		   <div class="item item-input-inset">    
+			<span class="input-label">To date</span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="date" ng-model="chequeInquiry.chToDate" />
+			</label>
+		  </div>
+			
+			<label class="item item-input">
+				<button class="button button-positive" ng-click="btnChequeStatusInquiryExecution(chequeInquiry)" >
+				 Submit
+				</button>
+			 </label>	
+
+		
+          
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	
+  </body>
+</html>
