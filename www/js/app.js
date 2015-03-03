@@ -85,16 +85,17 @@ angular.module('starter', ['ionic'])
 
 .controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter) {
 	
-    $rootScope.getServerIp='http://202.40.190.14:8084/'
 	//$rootScope.getServerIp='http://10.11.201.43:8084/'
+    //$rootScope.getServerIp='http://202.40.190.14:8084/'
+    $rootScope.getServerIp='http://202.40.178.58/'
     
     //window.addEventListener("load", initApp);
 	
 //    function initApp() {
 //		document.getElementById("btnLogin").addEventListener("click", login);
 //	}
-		$scope.user = { uname: 'era@mybank.com' };
-		
+		//$scope.user = { uname: 'era@mybank.com' };
+		$scope.user = "";
 
     
 	$scope.login = function (user) {
@@ -127,7 +128,7 @@ angular.module('starter', ['ionic'])
 					  headers : { 'Content-Type': 'application/json' }
 					}).success(function(data, status, headers, config) {
 						//alert("success..."+data.loginNodes[0].errorCode);
-							$rootScope.userChangeID=user.uname;
+							$rootScope.userChangeID = user.uname;
 						$ionicLoading.hide();
 						
 
