@@ -85,8 +85,8 @@ angular.module('starter', ['ionic'])
 
 .controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter) {
 	
-    //$rootScope.getServerIp='http://202.40.190.14:8084/'
-	$rootScope.getServerIp='http://10.11.201.43:8084/'
+    $rootScope.getServerIp='http://202.40.190.14:8084/'
+	//$rootScope.getServerIp='http://10.11.201.43:8084/'
     
     //window.addEventListener("load", initApp);
 	
