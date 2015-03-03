@@ -2,13 +2,14 @@
 <widget id="com.ionicframework.mobibank878686" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"  xmlns:gap="http://phonegap.com/ns/1.0">
   <name>MobiBank</name>
   <description>
-        An Ionic Framework and Cordova project.
+        MobiBank
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="eradevapps@gmail.com" href="http://era.com.bd/">
+      MobiBank Team
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <icon src="icon.png"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
