@@ -84,18 +84,7 @@ angular.module('starter', ['ionic'])
 })
 
 .controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter) {
-	
-	
-    
-    //window.addEventListener("load", initApp);
-	
-//    function initApp() {
-//		document.getElementById("btnLogin").addEventListener("click", login);
-//	}
-		//$scope.user = { uname: 'era@mybank.com' };
-		//$scope.user = "";
-        //document.getElementById('uname').value = "";
-        //document.getElementById('pass').value = "";
+
     
 	$scope.login = function (user) {
 	       				
