@@ -86,8 +86,8 @@ angular.module('starter', ['ionic'])
 .controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter) {
 	
 	//$rootScope.getServerIp='http://10.11.201.43:8084/'
-    //$rootScope.getServerIp='http://202.40.190.14:8084/'
-    $rootScope.getServerIp='http://202.40.178.58/'
+   //$rootScope.getServerIp='http://202.40.190.14:8084/'
+   $rootScope.getServerIp='http://202.40.178.58/'
     
     //window.addEventListener("load", initApp);
 	
@@ -95,12 +95,12 @@ angular.module('starter', ['ionic'])
 //		document.getElementById("btnLogin").addEventListener("click", login);
 //	}
 		//$scope.user = { uname: 'era@mybank.com' };
-		$scope.user = "";
-
+		//$scope.user = "";
+        //document.getElementById('uname').value = "";
+        //document.getElementById('pass').value = "";
     
 	$scope.login = function (user) {
-	
-       				
+	       				
 		if(!user || ! user.uname){
 		 $ionicPopup.alert({
 		  title: 'User ID Required !',
@@ -131,7 +131,7 @@ angular.module('starter', ['ionic'])
 							$rootScope.userChangeID = user.uname;
 						$ionicLoading.hide();
 						
-
+                       
 						if(data.loginNodes[0].errorCode ==0){
 							$scope.loginNodes = data.loginNodes; // response data
 							//$scope.responseArr = [];
@@ -143,7 +143,8 @@ angular.module('starter', ['ionic'])
 								 $rootScope.sessionID = loginNode.sessionID;
 								 $rootScope.errorMessage = loginNode.errorMessage;
 								 //alert(loginNode.mailID);
-								 
+                                    user.uname="";
+                                    user.pass="";
 								 //$rootScope.responseArr.push(loginNode);
 
 								 
@@ -159,7 +160,7 @@ angular.module('starter', ['ionic'])
 									$scope.accountTagCode = data.accountTagCode; // response data
 									$rootScope.accountTagCode = data.accountTagCode; // response data
 									$rootScope.responseArr = [];
-									angular.forEach(data.accountTagCode, function(accountTagCode, index) {
+								
 										if(data.accountTagCode[0].sErrorCode == 0) {
 											//alert('sucess');
 
@@ -200,7 +201,7 @@ angular.module('starter', ['ionic'])
 									  })
 									
 										}
-									});   
+									 
 									//alert($rootScope.responseArr.toString);
 								}).error(function(data, status, headers, config) {
 								$ionicLoading.hide();          
@@ -282,7 +283,7 @@ angular.module('starter', ['ionic'])
 								//                  });
 												});  
 						}else if(data.loginNodes[0].errorCode ==11){
-						
+						$state.go('changePassword');
 						
 						}else {
 							$ionicPopup.alert({
@@ -327,7 +328,10 @@ angular.module('starter', ['ionic'])
 			 } else {
 			   //console.log('You are not sure');
 			 }
-		   });
+	
+           });
+         //$rootScope.user = { uname: '' };
+        // $rootScope.user = { pass: '' };
 	 }
 
 })
